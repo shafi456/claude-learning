@@ -7,7 +7,10 @@ products = [
 ]
 
 def find_product(products: list[dict], product_id: int) -> list[dict] | None:
-    return [p for p in products if product_id == p["id"]]
+    for p in products:
+        if p["id"] == product_id:
+            return p
+    return None
 
 def available_products(products: list[dict]) -> list[dict]:
     return [p for p in products if p["in_stock"]]
@@ -24,7 +27,8 @@ def add_product(products: list[dict], name: str, price: int) -> dict:
     products.append(new_product)
     return new_product
 
-# print(find_product(products, 3))
-# print(find_product(products, 99))
-# print(available_products(products))
-# print(under_budget(products, 2000))
+if __name__ == "__main__":
+    print(find_product(products, 3))
+    print(find_product(products, 99))
+    print(available_products(products))
+    print(under_budget(products, 2000))
