@@ -15,8 +15,8 @@ def find_product(products: list[dict], product_id: int) -> list[dict] | None:
 def available_products(products: list[dict]) -> list[dict]:
     return [p for p in products if p["in_stock"]]
 
-def under_budget(products: list[dict], max_price: int) -> list[str]:
-    return [p["name"] for p in products if p["price"] <= max_price]
+def under_budget(products: list[dict], max_price: int) -> list[dict]:
+    return [p for p in products if p["price"] <= max_price]
 
 def add_product(products: list[dict], name: str, price: int) -> dict:
     new_product = {}

@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
-from products import products, find_product, add_product
+from products import products, find_product, add_product, available_products, under_budget
 
 app = FastAPI()
 
@@ -22,3 +22,13 @@ def get_product(product_id: int) -> dict:
 @app.post("/products", status_code=201)
 def create_product(product: ProductCreate) -> dict:
     return add_product(products, product.name, product.price)
+
+@app.get("/products")
+def list_products(in_stock: bool | None = None, max_price: int | None = None) -> list[dict]:
+    
+    result = products
+    if in_stock is not None:
+        result = [p for p in result if p["in_stock"] == in_stock]
+    if max_price is not None:
+        result = [p for p in result if p["price"] <= max_price]
+    return result
