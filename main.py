@@ -6,6 +6,11 @@ from products import products, find_product, add_product, available_products, un
 app = FastAPI()
 
 
+@app.get("/health")
+def health() -> dict:
+    return {"status": "ok"}
+
+
 class ProductCreate(BaseModel):
     name: str
     price: int
