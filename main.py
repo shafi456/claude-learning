@@ -8,7 +8,7 @@ app = FastAPI()
 
 @app.get("/health")
 def health() -> dict:
-    return {"status": "ok", "version": "1.0"}
+    return {"status": "healthy", "version": "1.0"}
 
 
 class ProductCreate(BaseModel):
