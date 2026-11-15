@@ -1,6 +1,6 @@
 # Session 1 practice: working with lists of dicts
 products = [
-    {"id": 1, "name": "Keyboard", "price": 1500, "in_stock": True},
+    {"id": 1, "name": "Keyboard", "price": 1500, "in_stock": True, "supplier_cost": 900},
     {"id": 2, "name": "Mouse", "price": 600, "in_stock": False},
     {"id": 3, "name": "Monitor", "price": 15000, "in_stock": True},
     {"id": 4, "name": "Headphones", "price": 2500, "in_stock": True},
